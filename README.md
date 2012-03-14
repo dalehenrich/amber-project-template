@@ -10,8 +10,8 @@ This is a template that you can use for easily creating your own [Amber-based][1
 has been modified so that you can store your 
 project [.st](https://github.com/dalehenrich/amber-project-template/blob/master/st) 
 and [.js](https://github.com/dalehenrich/amber-project-template/blob/master/js) artifacts separately 
-from the amber [.st](https://github.com/dalehenrich/amber-project-template/blob/master/amber/st) 
-and [.js](https://github.com/dalehenrich/amber-project-template/blob/master/amber/js) artifacts.
+from the amber [.st](https://github.com/NicolasPetton/amber/tree/master/st) 
+and [.js](https://github.com/NicolasPetton/amber/tree/master/js) artifacts.
 
 3. The [node server script](bin/server) has been linked in the top-level for convenience.
 
