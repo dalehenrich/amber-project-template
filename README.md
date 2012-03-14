@@ -6,8 +6,12 @@ This is a template that you can use for easily creating your own [Amber-based][1
 1. Nicolas Petton's Amber project is linked into the template as a git submodule. See 
 [Working with submodules](http://help.github.com/submodules/) for more information about using submodules on github.
 
-2. The [amber launch script](js/amber.js) has been modified so that you can store your project
-   [.st](st) and [.js](js] artifacts separately from the amber [.st](amber/st) and [.js](amber/js] artifacts.
+2. The [amber launch script](https://github.com/dalehenrich/amber-project-template/blob/master/js/amber.js) 
+has been modified so that you can store your project
+[.st](https://github.com/dalehenrich/amber-project-template/blob/master/st) and 
+[.js](https://github.com/dalehenrich/amber-project-template/blob/master/js] artifacts separately 
+from the amber [.st](https://github.com/dalehenrich/amber-project-template/blob/master/amber/st) 
+and [.js](https://github.com/dalehenrich/amber-project-template/blob/master/amber/js] artifacts.
 
 3. The [node server script](bin/server) has been linked in the top-level for convenience.
 
