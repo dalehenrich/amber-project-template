@@ -47,8 +47,7 @@ on [Amber wiki](https://github.com/NicolasPetton/amber/wiki/)):
   
 4. Follow instructions for [Writing my first app](https://github.com/NicolasPetton/amber/wiki/Writing-my-first-app), with the following caveats:
 
-  - the **index.html** file in the root directory of the project
-is already created and already calls the class browser.
+  - use the AmberProjectPackage class as your starting point, since it is already wired into the index.html file.
   - file saved during a commit will be saved into the **st** and **js** directories in the root of your project.
 
 [1]: https://github.com/NicolasPetton/amber
