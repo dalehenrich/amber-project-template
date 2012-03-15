@@ -28,6 +28,8 @@ cd myProject
 git init
 git add .
 git commit -a -m"first commit"
+git submodule init
+git submodule update
 </pre>
 
 2. Install node (extracted from: [Getting Started page](https://github.com/NicolasPetton/amber/wiki/Getting-started) 
