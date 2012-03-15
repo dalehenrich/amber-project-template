@@ -18,12 +18,13 @@ and [.js](https://github.com/NicolasPetton/amber/tree/master/js) artifacts.
 ##Installation
 1. Create a git repository for your project and copy the contents of the tempate into the repository:
 <pre>
-mkdir myProject
-cd myProject
-git init
-curl https://github.com/dalehenrich/amber-project-template/zipball/master >> template.zip
+curl -L https://github.com/dalehenrich/amber-project-template/zipball/master >> template.zip
 unzip template.zip
 rm template.zip
+mkdir myProject
+mv dalehenrich-amber-project-template-df98acc/* myProject
+rm -rf dalehenrich-amber-project-template-df98acc
+cd myProject
 git init
 git add .
 git commit -a -m"first commit"
