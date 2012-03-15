@@ -74,11 +74,10 @@ renderOn: html
 
 renderProjectLink: url
 
-	projectLinkDiv contents: [:html |
-		html p with: [:h | 
-                 	h
-                        	a href: url; 
-                        	with: self projectname ]].
+	projectLinkDiv with: [:h | 
+                 h
+                 	a href: url; 
+                        with: self projectname ].
 ! !
 
 !AmberProjectPage class methodsFor: 'instance creation'!
