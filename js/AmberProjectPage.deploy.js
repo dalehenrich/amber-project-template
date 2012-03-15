@@ -69,7 +69,7 @@ smalltalk.method({
 selector: unescape('renderProjectLink%3A'),
 fn: function (url){
 var self=this;
-smalltalk.send(self['@projectLinkDiv'], "_contents_", [(function(h){return smalltalk.send(smalltalk.send(h, "_h1", []), "_with_", [(function(){return (function($rec){smalltalk.send($rec, "_href_", [url]);return smalltalk.send($rec, "_with_", [smalltalk.send(self, "_projectname", [])]);})(smalltalk.send(h, "_a", []));})]);})]);
+smalltalk.send(self['@projectLinkDiv'], "_with_", [(function(h){return smalltalk.send(smalltalk.send(h, "_h1", []), "_with_", [(function(){return (function($rec){smalltalk.send($rec, "_href_", [url]);return smalltalk.send($rec, "_with_", [smalltalk.send(self, "_projectname", [])]);})(smalltalk.send(h, "_a", []));})]);})]);
 return self;}
 }),
 smalltalk.AmberProjectPage);

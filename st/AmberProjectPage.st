@@ -74,7 +74,7 @@ renderOn: html
 
 renderProjectLink: url
 
-	projectLinkDiv contents: [:h | 
+	projectLinkDiv with: [:h | 
                  h h1 with: [
                  	h 
 				a href: url; 

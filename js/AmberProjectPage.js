@@ -95,11 +95,11 @@ selector: unescape('renderProjectLink%3A'),
 category: 'rendering',
 fn: function (url){
 var self=this;
-smalltalk.send(self['@projectLinkDiv'], "_contents_", [(function(h){return smalltalk.send(smalltalk.send(h, "_h1", []), "_with_", [(function(){return (function($rec){smalltalk.send($rec, "_href_", [url]);return smalltalk.send($rec, "_with_", [smalltalk.send(self, "_projectname", [])]);})(smalltalk.send(h, "_a", []));})]);})]);
+smalltalk.send(self['@projectLinkDiv'], "_with_", [(function(h){return smalltalk.send(smalltalk.send(h, "_h1", []), "_with_", [(function(){return (function($rec){smalltalk.send($rec, "_href_", [url]);return smalltalk.send($rec, "_with_", [smalltalk.send(self, "_projectname", [])]);})(smalltalk.send(h, "_a", []));})]);})]);
 return self;},
 args: ["url"],
-source: unescape('renderProjectLink%3A%20url%0A%0A%09projectLinkDiv%20contents%3A%20%5B%3Ah%20%7C%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20h%20h1%20with%3A%20%5B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%09h%20%0A%09%09%09%09a%20href%3A%20url%3B%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%09with%3A%20self%20projectname%20%5D%5D.'),
-messageSends: ["contents:", "with:", "h1", "href:", "projectname", "a"],
+source: unescape('renderProjectLink%3A%20url%0A%0A%09projectLinkDiv%20with%3A%20%5B%3Ah%20%7C%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20h%20h1%20with%3A%20%5B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%09h%20%0A%09%09%09%09a%20href%3A%20url%3B%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%09with%3A%20self%20projectname%20%5D%5D.'),
+messageSends: ["with:", "h1", "href:", "projectname", "a"],
 referencedClasses: []
 }),
 smalltalk.AmberProjectPage);
