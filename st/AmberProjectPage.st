@@ -1,6 +1,6 @@
 Smalltalk current createPackage: 'AmberProjectPage' properties: #{}!
 Widget subclass: #AmberProjectPage
-	instanceVariableNames: 'repositoryDiv'
+	instanceVariableNames: 'repositoryDiv username projectname'
 	category: 'AmberProjectPage'!
 
 !AmberProjectPage methodsFor: 'rendering'!
@@ -11,7 +11,7 @@ renderOn: html
 		html div
 			id: 'header';
 			class: 'span-24 last';
-			with: [ :div | div h1: 'Amber Project Name' ].
+			with: [ :div | div h1: self projectname ].
 		html hr.
 		html div
 			id: 'subheader';
@@ -43,6 +43,25 @@ getTest
 				repositoryDiv with: repositoryData data name ].
      			'error' ->[:jqXHR :status :error | 
 				repositoryDiv with: status printString  ]}.
+!
+
+username
+
+	| hostname index |
+	username ifNil: [ 
+		hostname := window location hostname.
+		index := hostname indexOf: '.'.
+		username := hostname copyFrom: 1 to: index -1 ].
+	^username
+!
+
+projectname
+
+	| path |
+	projectname ifNil: [ 
+		path := window location pathname.
+		projectname := path copyFrom: 2 to: path size ].
+	^projectname
 ! !
 
 !AmberProjectPage class methodsFor: 'instance creation'!
