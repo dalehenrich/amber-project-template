@@ -57,7 +57,7 @@ renderOn: html
 		html div
 			id: 'header';
 			class: 'span-24 last';
-			with: [ :div | projectLinkDiv := div h1; yourself ].
+			with: [ :div | projectLinkDiv := div ].
 		html hr.
 		html div
 			id: 'subheader';
@@ -74,10 +74,11 @@ renderOn: html
 
 renderProjectLink: url
 
-	projectLinkDiv with: [:h | 
-                 h
-                 	a href: url; 
-                        with: self projectname ].
+	projectLinkDiv contents: [:h | 
+                 h h1 with: [
+                 	h 
+				a href: url; 
+                        	with: self projectname ]].
 ! !
 
 !AmberProjectPage class methodsFor: 'instance creation'!

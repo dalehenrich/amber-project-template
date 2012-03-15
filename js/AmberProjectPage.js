@@ -7,12 +7,12 @@ selector: unescape('renderOn%3A'),
 category: 'rendering',
 fn: function (html){
 var self=this;
-(function($rec){smalltalk.send($rec, "_class_", ["container"]);return smalltalk.send($rec, "_with_", [(function(){(function($rec){smalltalk.send($rec, "_id_", ["header"]);smalltalk.send($rec, "_class_", [unescape("span-24%20last")]);return smalltalk.send($rec, "_with_", [(function(div){return (self['@projectLinkDiv']=(function($rec){smalltalk.send($rec, "_h1", []);return smalltalk.send($rec, "_yourself", []);})(div));})]);})(smalltalk.send(html, "_div", []));smalltalk.send(html, "_hr", []);(function($rec){smalltalk.send($rec, "_id_", ["subheader"]);smalltalk.send($rec, "_class_", [unescape("span-24%20last")]);return smalltalk.send($rec, "_with_", [(function(div){return (self['@descriptionDiv']=(function($rec){smalltalk.send($rec, "_class_", ["alt"]);return smalltalk.send($rec, "_yourself", []);})(smalltalk.send(div, "_h3", [])));})]);})(smalltalk.send(html, "_div", []));return smalltalk.send(html, "_hr", []);})]);})(smalltalk.send(html, "_div", []));
+(function($rec){smalltalk.send($rec, "_class_", ["container"]);return smalltalk.send($rec, "_with_", [(function(){(function($rec){smalltalk.send($rec, "_id_", ["header"]);smalltalk.send($rec, "_class_", [unescape("span-24%20last")]);return smalltalk.send($rec, "_with_", [(function(div){return (self['@projectLinkDiv']=div);})]);})(smalltalk.send(html, "_div", []));smalltalk.send(html, "_hr", []);(function($rec){smalltalk.send($rec, "_id_", ["subheader"]);smalltalk.send($rec, "_class_", [unescape("span-24%20last")]);return smalltalk.send($rec, "_with_", [(function(div){return (self['@descriptionDiv']=(function($rec){smalltalk.send($rec, "_class_", ["alt"]);return smalltalk.send($rec, "_yourself", []);})(smalltalk.send(div, "_h3", [])));})]);})(smalltalk.send(html, "_div", []));return smalltalk.send(html, "_hr", []);})]);})(smalltalk.send(html, "_div", []));
 smalltalk.send(self, "_repositoryJsonDo_", [(function(json){smalltalk.send(self['@descriptionDiv'], "_with_", [smalltalk.send(json, "_description", [])]);return smalltalk.send(self, "_renderProjectLink_", [smalltalk.send(json, "_at_", ["html_url"])]);})]);
 return self;},
 args: ["html"],
-source: unescape('renderOn%3A%20html%0A%0A%09html%20div%20class%3A%27container%27%3B%20with%3A%5B%20%0A%09%09html%20div%0A%09%09%09id%3A%20%27header%27%3B%0A%09%09%09class%3A%20%27span-24%20last%27%3B%0A%09%09%09with%3A%20%5B%20%3Adiv%20%7C%20projectLinkDiv%20%3A%3D%20div%20h1%3B%20yourself%20%5D.%0A%09%09html%20hr.%0A%09%09html%20div%0A%09%09%09id%3A%20%27subheader%27%3B%0A%09%09%09class%3A%20%27span-24%20last%27%3B%0A%09%09%09with%3A%20%5B%3Adiv%20%7C%20%0A%09%09%09%09descriptionDiv%20%3A%3D%20div%20h3%0A%09%09%09%09%09class%3A%20%27alt%27%3B%0A%09%09%09%09%09yourself%20%5D.%0A%09%09html%20hr%20%5D.%0A%09self%20repositoryJsonDo%3A%20%5B%3Ajson%20%7C%20%0A%20%20%20%20%20%20%20%20%09descriptionDiv%20with%3A%20json%20description.%0A%09%09self%20renderProjectLink%3A%20%28json%20at%3A%20%27html_url%27%29%20%5D'),
-messageSends: ["class:", "with:", "id:", "h1", "yourself", "div", "hr", "h3", "repositoryJsonDo:", "description", "renderProjectLink:", "at:"],
+source: unescape('renderOn%3A%20html%0A%0A%09html%20div%20class%3A%27container%27%3B%20with%3A%5B%20%0A%09%09html%20div%0A%09%09%09id%3A%20%27header%27%3B%0A%09%09%09class%3A%20%27span-24%20last%27%3B%0A%09%09%09with%3A%20%5B%20%3Adiv%20%7C%20projectLinkDiv%20%3A%3D%20div%20%5D.%0A%09%09html%20hr.%0A%09%09html%20div%0A%09%09%09id%3A%20%27subheader%27%3B%0A%09%09%09class%3A%20%27span-24%20last%27%3B%0A%09%09%09with%3A%20%5B%3Adiv%20%7C%20%0A%09%09%09%09descriptionDiv%20%3A%3D%20div%20h3%0A%09%09%09%09%09class%3A%20%27alt%27%3B%0A%09%09%09%09%09yourself%20%5D.%0A%09%09html%20hr%20%5D.%0A%09self%20repositoryJsonDo%3A%20%5B%3Ajson%20%7C%20%0A%20%20%20%20%20%20%20%20%09descriptionDiv%20with%3A%20json%20description.%0A%09%09self%20renderProjectLink%3A%20%28json%20at%3A%20%27html_url%27%29%20%5D'),
+messageSends: ["class:", "with:", "id:", "div", "hr", "yourself", "h3", "repositoryJsonDo:", "description", "renderProjectLink:", "at:"],
 referencedClasses: []
 }),
 smalltalk.AmberProjectPage);
@@ -95,11 +95,11 @@ selector: unescape('renderProjectLink%3A'),
 category: 'rendering',
 fn: function (url){
 var self=this;
-smalltalk.send(self['@projectLinkDiv'], "_with_", [(function(h){return (function($rec){smalltalk.send($rec, "_href_", [url]);return smalltalk.send($rec, "_with_", [smalltalk.send(self, "_projectname", [])]);})(smalltalk.send(h, "_a", []));})]);
+smalltalk.send(self['@projectLinkDiv'], "_contents_", [(function(h){return smalltalk.send(smalltalk.send(h, "_h1", []), "_with_", [(function(){return (function($rec){smalltalk.send($rec, "_href_", [url]);return smalltalk.send($rec, "_with_", [smalltalk.send(self, "_projectname", [])]);})(smalltalk.send(h, "_a", []));})]);})]);
 return self;},
 args: ["url"],
-source: unescape('renderProjectLink%3A%20url%0A%0A%09projectLinkDiv%20with%3A%20%5B%3Ah%20%7C%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20h%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%09a%20href%3A%20url%3B%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20with%3A%20self%20projectname%20%5D.'),
-messageSends: ["with:", "href:", "projectname", "a"],
+source: unescape('renderProjectLink%3A%20url%0A%0A%09projectLinkDiv%20contents%3A%20%5B%3Ah%20%7C%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20h%20h1%20with%3A%20%5B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%09h%20%0A%09%09%09%09a%20href%3A%20url%3B%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%09with%3A%20self%20projectname%20%5D%5D.'),
+messageSends: ["contents:", "with:", "h1", "href:", "projectname", "a"],
 referencedClasses: []
 }),
 smalltalk.AmberProjectPage);
