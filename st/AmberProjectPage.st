@@ -7,7 +7,15 @@ Widget subclass: #AmberProjectPage
 
 renderOn: html
 
-	html with: 'This is your Amber project template skeleton page.'
+	html div class:'container'; with:[ 
+		"html id: 'header'; class: 'span-24 last'; with: [:hdr |"
+			html h1: [ :h | h with: 'Amber Project Name' ].
+		"].
+		html id: 'subheader'; class: 'span-24 last'; with: ["
+		html 
+			h3: [:h | h with: 'Amber Project description' ].
+		"]."
+		html with: 'This is your Amber project template skeleton page.' ]
 ! !
 
 !AmberProjectPage class methodsFor: 'instance creation'!
