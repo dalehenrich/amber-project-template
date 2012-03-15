@@ -92,11 +92,12 @@ selector: unescape('repositoryJsonDo%3A'),
 category: 'accessing',
 fn: function (aBlock){
 var self=this;
-(($receiver = self['@repositoryJson']) == nil || $receiver == undefined) ? (function(){return smalltalk.send(self, "_getRepositoryJsonDo_onError_", [(function(repoJSON){(self['@repositoryJson']=repoJSON);return smalltalk.send(aBlock, "_value_", [self['@repositoryJson']]);}), (function(status){return nil;})]);})() : $receiver;
+try{(($receiver = self['@repositoryJson']) == nil || $receiver == undefined) ? (function(){smalltalk.send(self, "_getRepositoryJsonDo_onError_", [(function(repoJSON){(self['@repositoryJson']=repoJSON);return smalltalk.send(aBlock, "_value_", [self['@repositoryJson']]);}), (function(status){return nil;})]);return (function(){throw({name: 'stReturn', selector: '_repositoryJsonDo_', fn: function(){return self}})})();})() : $receiver;
 smalltalk.send(smalltalk.send(aBlock, "_value", []), "_repositoryJson", []);
-return self;},
+return self;
+} catch(e) {if(e.name === 'stReturn' && e.selector === '_repositoryJsonDo_'){return e.fn()} throw(e)}},
 args: ["aBlock"],
-source: unescape('repositoryJsonDo%3A%20aBlock%0A%0A%09repositoryJson%20ifNil%3A%20%5B%0A%09%09self%20%0A%09%09%09getRepositoryJsonDo%3A%20%5B%3ArepoJSON%20%7C%20%0A%09%09%09%09repositoryJson%20%3A%3D%20%20repoJSON.%0A%09%09%09%09aBlock%20value%3A%20repositoryJson%20%20%20%5D%20%0A%09%09%09onError%3A%20%5B%3Astatus%20%7C%20%20%5D%20%5D.%0A%09aBlock%20value%20repositoryJson%0A%09'),
+source: unescape('repositoryJsonDo%3A%20aBlock%0A%0A%09repositoryJson%20ifNil%3A%20%5B%0A%09%09self%20%0A%09%09%09getRepositoryJsonDo%3A%20%5B%3ArepoJSON%20%7C%20%0A%09%09%09%09repositoryJson%20%3A%3D%20%20repoJSON.%0A%09%09%09%09aBlock%20value%3A%20repositoryJson%20%20%20%5D%20%0A%09%09%09onError%3A%20%5B%3Astatus%20%7C%20%20%5D.%0A%09%09%5Eself%20%5D.%0A%09aBlock%20value%20repositoryJson%0A%09'),
 messageSends: ["ifNil:", "getRepositoryJsonDo:onError:", "value:", "repositoryJson", "value"],
 referencedClasses: []
 }),

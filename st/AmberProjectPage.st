@@ -31,7 +31,8 @@ repositoryJsonDo: aBlock
 			getRepositoryJsonDo: [:repoJSON | 
 				repositoryJson :=  repoJSON.
 				aBlock value: repositoryJson   ] 
-			onError: [:status |  ] ].
+			onError: [:status |  ].
+		^self ].
 	aBlock value repositoryJson
 ! !
 
