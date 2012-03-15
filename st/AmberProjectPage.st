@@ -1,6 +1,6 @@
 Smalltalk current createPackage: 'AmberProjectPage' properties: #{}!
 Widget subclass: #AmberProjectPage
-	instanceVariableNames: ''
+	instanceVariableNames: 'repositoryDiv'
 	category: 'AmberProjectPage'!
 
 !AmberProjectPage methodsFor: 'rendering'!
@@ -21,7 +21,28 @@ renderOn: html
 					class: 'alt';
 					with: 'Amber Project description' ].
 		html hr.
-		html with: 'This is your Amber project README?' ]
+		html with: 'This is your Amber project README.' .
+		repositoryDiv := html div id:'test'.
+		html div with:[   	
+			html 
+        			button
+				class:'test';
+                		with: 'test get';
+                		onClick: [  repositoryDiv contents:  [:div | self getTest  ] ] ] ].
+	self getTest
+!
+
+getTest
+
+	jQuery 
+		ajax: 'https:/api.github.com/repos/dalehenrich/amber-project-template'
+		options: #{ 
+			'type' -> 'GET'.
+			'dataType' -> 'jsonp'.
+			'success' -> [:repositoryData :status :jqXHR | 
+				repositoryDiv with: repositoryData data name ].
+     			'error' ->[:jqXHR :status :error | 
+				repositoryDiv with: status printString  ]}.
 ! !
 
 !AmberProjectPage class methodsFor: 'instance creation'!
