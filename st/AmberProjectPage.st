@@ -1,6 +1,6 @@
 Smalltalk current createPackage: 'AmberProjectPage' properties: #{}!
 Widget subclass: #AmberProjectPage
-	instanceVariableNames: 'username projectname descriptionDiv repositoryJson projectLinkDiv'
+	instanceVariableNames: 'username projectname descriptionDiv repositoryJson projectLinkDiv authorLinkDiv authorJson'
 	category: 'AmberProjectPage'!
 
 !AmberProjectPage methodsFor: 'accessing'!
@@ -26,15 +26,7 @@ projectname
 
 getRepositoryJsonDo: aBlock onError: errorBlock
 
-	jQuery 
-		ajax: 'https:/api.github.com/repos/', self username, '/', self projectname
-		options: #{ 
-			'type' -> 'GET'.
-			'dataType' -> 'jsonp'.
-			'success' -> [:repositoryData :status :jqXHR | 
-				aBlock value: repositoryData data  ].
-     			'error' ->[:jqXHR :status :error | 
-				errorBlock value: status printString ]}.
+	self getJson: 'https:/api.github.com/repos/', self username, '/', self projectname do: aBlock onError: errorBlock
 !
 
 repositoryJsonDo: aBlock
@@ -47,6 +39,34 @@ repositoryJsonDo: aBlock
 			onError: [:status |  ].
 		^self ].
 	aBlock value repositoryJson
+!
+
+authorJsonDo: aBlock
+	authorJson ifNil: [
+		self 
+			getAuthorJsonDo: [:authJSON | 
+				authorJson :=  authJSON.
+				aBlock value: authorJson   ] 
+			onError: [:status |  ].
+		^self ].
+	aBlock value authorJson
+!
+
+getAuthorJsonDo: aBlock onError: errorBlock
+
+	self getJson: 'https:/api.github.com/users/', self username do: aBlock onError: errorBlock
+!
+
+getJson: url do: aBlock onError: errorBlock
+	jQuery 
+		ajax: url
+		options: #{ 
+			'type' -> 'GET'.
+			'dataType' -> 'jsonp'.
+			'success' -> [:jsonpData :status :jqXHR | 
+				aBlock value: jsonpData data  ].
+     			'error' ->[:jqXHR :status :error | 
+				errorBlock value: status printString ]}.
 ! !
 
 !AmberProjectPage methodsFor: 'rendering'!
@@ -66,18 +86,28 @@ renderOn: html
 				descriptionDiv := (div h3)
 					class: 'alt';
 					yourself ].
-		html hr ].
+		html hr.
+		authorLinkDiv := html div ].
 	self repositoryJsonDo: [:json | 
         	descriptionDiv contents: [:h | h with: json description ].
-		self renderProjectLink: (json at: 'html_url') ]
+		self renderProjectLink: (json at: 'html_url') ].
+	self authorJsonDo: [:json | self renderAuthor: json name link: (json at: 'html_url') ].
 !
 
 renderProjectLink: url
 
 	projectLinkDiv contents: [:h | 
-                 	h 
-				a href: url; 
-                        	with: self projectname ].
+                 h 
+			a href: url; 
+                        with: self projectname ].
+!
+
+renderAuthor: name link: url
+	authorLinkDiv contents: [:h | 
+		h with: 'by '.
+		h
+                 	a href: url; 
+                        with: name ].
 ! !
 
 !AmberProjectPage class methodsFor: 'instance creation'!

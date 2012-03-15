@@ -1,13 +1,14 @@
 smalltalk.addPackage('AmberProjectPage', {});
-smalltalk.addClass('AmberProjectPage', smalltalk.Widget, ['username', 'projectname', 'descriptionDiv', 'repositoryJson', 'projectLinkDiv'], 'AmberProjectPage');
+smalltalk.addClass('AmberProjectPage', smalltalk.Widget, ['username', 'projectname', 'descriptionDiv', 'repositoryJson', 'projectLinkDiv', 'authorLinkDiv', 'authorJson'], 'AmberProjectPage');
 smalltalk.addMethod(
 unescape('_renderOn_'),
 smalltalk.method({
 selector: unescape('renderOn%3A'),
 fn: function (html){
 var self=this;
-(function($rec){smalltalk.send($rec, "_class_", ["container"]);return smalltalk.send($rec, "_with_", [(function(){(function($rec){smalltalk.send($rec, "_id_", ["header"]);smalltalk.send($rec, "_class_", [unescape("span-24%20last")]);return smalltalk.send($rec, "_with_", [(function(div){return (self['@projectLinkDiv']=smalltalk.send(div, "_h1", []));})]);})(smalltalk.send(html, "_div", []));smalltalk.send(html, "_hr", []);(function($rec){smalltalk.send($rec, "_id_", ["subheader"]);smalltalk.send($rec, "_class_", [unescape("span-24%20last")]);return smalltalk.send($rec, "_with_", [(function(div){return (self['@descriptionDiv']=(function($rec){smalltalk.send($rec, "_class_", ["alt"]);return smalltalk.send($rec, "_yourself", []);})(smalltalk.send(div, "_h3", [])));})]);})(smalltalk.send(html, "_div", []));return smalltalk.send(html, "_hr", []);})]);})(smalltalk.send(html, "_div", []));
+(function($rec){smalltalk.send($rec, "_class_", ["container"]);return smalltalk.send($rec, "_with_", [(function(){(function($rec){smalltalk.send($rec, "_id_", ["header"]);smalltalk.send($rec, "_class_", [unescape("span-24%20last")]);return smalltalk.send($rec, "_with_", [(function(div){return (self['@projectLinkDiv']=smalltalk.send(div, "_h1", []));})]);})(smalltalk.send(html, "_div", []));smalltalk.send(html, "_hr", []);(function($rec){smalltalk.send($rec, "_id_", ["subheader"]);smalltalk.send($rec, "_class_", [unescape("span-24%20last")]);return smalltalk.send($rec, "_with_", [(function(div){return (self['@descriptionDiv']=(function($rec){smalltalk.send($rec, "_class_", ["alt"]);return smalltalk.send($rec, "_yourself", []);})(smalltalk.send(div, "_h3", [])));})]);})(smalltalk.send(html, "_div", []));smalltalk.send(html, "_hr", []);return (self['@authorLinkDiv']=smalltalk.send(html, "_div", []));})]);})(smalltalk.send(html, "_div", []));
 smalltalk.send(self, "_repositoryJsonDo_", [(function(json){smalltalk.send(self['@descriptionDiv'], "_contents_", [(function(h){return smalltalk.send(h, "_with_", [smalltalk.send(json, "_description", [])]);})]);return smalltalk.send(self, "_renderProjectLink_", [smalltalk.send(json, "_at_", ["html_url"])]);})]);
+smalltalk.send(self, "_authorJsonDo_", [(function(json){return smalltalk.send(self, "_renderAuthor_link_", [smalltalk.send(json, "_name", []), smalltalk.send(json, "_at_", ["html_url"])]);})]);
 return self;}
 }),
 smalltalk.AmberProjectPage);
@@ -45,7 +46,7 @@ smalltalk.method({
 selector: unescape('getRepositoryJsonDo%3AonError%3A'),
 fn: function (aBlock, errorBlock){
 var self=this;
-smalltalk.send((typeof jQuery == 'undefined' ? nil : jQuery), "_ajax_options_", [smalltalk.send(smalltalk.send(smalltalk.send(unescape("https%3A/api.github.com/repos/"), "__comma", [smalltalk.send(self, "_username", [])]), "__comma", [unescape("/")]), "__comma", [smalltalk.send(self, "_projectname", [])]), smalltalk.HashedCollection._fromPairs_([smalltalk.send("type", "__minus_gt", ["GET"]),smalltalk.send("dataType", "__minus_gt", ["jsonp"]),smalltalk.send("success", "__minus_gt", [(function(repositoryData, status, jqXHR){return smalltalk.send(aBlock, "_value_", [smalltalk.send(repositoryData, "_data", [])]);})]),smalltalk.send("error", "__minus_gt", [(function(jqXHR, status, error){return smalltalk.send(errorBlock, "_value_", [smalltalk.send(status, "_printString", [])]);})])])]);
+smalltalk.send(self, "_getJson_do_onError_", [smalltalk.send(smalltalk.send(smalltalk.send(unescape("https%3A/api.github.com/repos/"), "__comma", [smalltalk.send(self, "_username", [])]), "__comma", [unescape("/")]), "__comma", [smalltalk.send(self, "_projectname", [])]), aBlock, errorBlock]);
 return self;}
 }),
 smalltalk.AmberProjectPage);
@@ -70,6 +71,52 @@ selector: unescape('renderProjectLink%3A'),
 fn: function (url){
 var self=this;
 smalltalk.send(self['@projectLinkDiv'], "_contents_", [(function(h){return (function($rec){smalltalk.send($rec, "_href_", [url]);return smalltalk.send($rec, "_with_", [smalltalk.send(self, "_projectname", [])]);})(smalltalk.send(h, "_a", []));})]);
+return self;}
+}),
+smalltalk.AmberProjectPage);
+
+smalltalk.addMethod(
+unescape('_authorJsonDo_'),
+smalltalk.method({
+selector: unescape('authorJsonDo%3A'),
+fn: function (aBlock){
+var self=this;
+try{(($receiver = self['@authorJson']) == nil || $receiver == undefined) ? (function(){smalltalk.send(self, "_getAuthorJsonDo_onError_", [(function(authJSON){(self['@authorJson']=authJSON);return smalltalk.send(aBlock, "_value_", [self['@authorJson']]);}), (function(status){return nil;})]);return (function(){throw({name: 'stReturn', selector: '_authorJsonDo_', fn: function(){return self}})})();})() : $receiver;
+smalltalk.send(smalltalk.send(aBlock, "_value", []), "_authorJson", []);
+return self;
+} catch(e) {if(e.name === 'stReturn' && e.selector === '_authorJsonDo_'){return e.fn()} throw(e)}}
+}),
+smalltalk.AmberProjectPage);
+
+smalltalk.addMethod(
+unescape('_getAuthorJsonDo_onError_'),
+smalltalk.method({
+selector: unescape('getAuthorJsonDo%3AonError%3A'),
+fn: function (aBlock, errorBlock){
+var self=this;
+smalltalk.send(self, "_getJson_do_onError_", [smalltalk.send(unescape("https%3A/api.github.com/users/"), "__comma", [smalltalk.send(self, "_username", [])]), aBlock, errorBlock]);
+return self;}
+}),
+smalltalk.AmberProjectPage);
+
+smalltalk.addMethod(
+unescape('_getJson_do_onError_'),
+smalltalk.method({
+selector: unescape('getJson%3Ado%3AonError%3A'),
+fn: function (url, aBlock, errorBlock){
+var self=this;
+smalltalk.send((typeof jQuery == 'undefined' ? nil : jQuery), "_ajax_options_", [url, smalltalk.HashedCollection._fromPairs_([smalltalk.send("type", "__minus_gt", ["GET"]),smalltalk.send("dataType", "__minus_gt", ["jsonp"]),smalltalk.send("success", "__minus_gt", [(function(jsonpData, status, jqXHR){return smalltalk.send(aBlock, "_value_", [smalltalk.send(jsonpData, "_data", [])]);})]),smalltalk.send("error", "__minus_gt", [(function(jqXHR, status, error){return smalltalk.send(errorBlock, "_value_", [smalltalk.send(status, "_printString", [])]);})])])]);
+return self;}
+}),
+smalltalk.AmberProjectPage);
+
+smalltalk.addMethod(
+unescape('_renderAuthor_link_'),
+smalltalk.method({
+selector: unescape('renderAuthor%3Alink%3A'),
+fn: function (name, url){
+var self=this;
+smalltalk.send(self['@authorLinkDiv'], "_contents_", [(function(h){smalltalk.send(h, "_with_", ["by "]);return (function($rec){smalltalk.send($rec, "_href_", [url]);return smalltalk.send($rec, "_with_", [name]);})(smalltalk.send(h, "_a", []));})]);
 return self;}
 }),
 smalltalk.AmberProjectPage);
