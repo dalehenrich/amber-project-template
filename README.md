@@ -27,9 +27,9 @@ rm -rf dalehenrich-amber-project-template-*
 cd myProject
 git init
 git add .
-git commit -a -m"first commit"
 rm -rf amber
 git submodule add https://github.com/NicolasPetton/amber.git amber
+git commit -a -m"first commit"
 </pre>
 
 2. Install node (extracted from: [Getting Started page](https://github.com/NicolasPetton/amber/wiki/Getting-started) 
