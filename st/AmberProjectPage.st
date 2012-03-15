@@ -21,7 +21,7 @@ renderOn: html
 					class: 'alt';
 					with: 'Amber Project description' ].
 		html hr.
-		html with: 'This is your Amber project template skeleton page.' ]
+		html with: 'This is your Amber project README?' ]
 ! !
 
 !AmberProjectPage class methodsFor: 'instance creation'!
