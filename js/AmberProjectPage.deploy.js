@@ -6,8 +6,8 @@ smalltalk.method({
 selector: unescape('renderOn%3A'),
 fn: function (html){
 var self=this;
-(function($rec){smalltalk.send($rec, "_class_", ["container"]);return smalltalk.send($rec, "_with_", [(function(){(function($rec){smalltalk.send($rec, "_id_", ["header"]);smalltalk.send($rec, "_class_", [unescape("span-24%20last")]);return smalltalk.send($rec, "_with_", [(function(div){return (self['@projectLinkDiv']=div);})]);})(smalltalk.send(html, "_div", []));smalltalk.send(html, "_hr", []);(function($rec){smalltalk.send($rec, "_id_", ["subheader"]);smalltalk.send($rec, "_class_", [unescape("span-24%20last")]);return smalltalk.send($rec, "_with_", [(function(div){return (self['@descriptionDiv']=(function($rec){smalltalk.send($rec, "_class_", ["alt"]);return smalltalk.send($rec, "_yourself", []);})(smalltalk.send(div, "_h3", [])));})]);})(smalltalk.send(html, "_div", []));return smalltalk.send(html, "_hr", []);})]);})(smalltalk.send(html, "_div", []));
-smalltalk.send(self, "_repositoryJsonDo_", [(function(json){smalltalk.send(self['@descriptionDiv'], "_with_", [smalltalk.send(json, "_description", [])]);return smalltalk.send(self, "_renderProjectLink_", [smalltalk.send(json, "_at_", ["html_url"])]);})]);
+(function($rec){smalltalk.send($rec, "_class_", ["container"]);return smalltalk.send($rec, "_with_", [(function(){(function($rec){smalltalk.send($rec, "_id_", ["header"]);smalltalk.send($rec, "_class_", [unescape("span-24%20last")]);return smalltalk.send($rec, "_with_", [(function(div){return (self['@projectLinkDiv']=smalltalk.send(div, "_h1", []));})]);})(smalltalk.send(html, "_div", []));smalltalk.send(html, "_hr", []);(function($rec){smalltalk.send($rec, "_id_", ["subheader"]);smalltalk.send($rec, "_class_", [unescape("span-24%20last")]);return smalltalk.send($rec, "_with_", [(function(div){return (self['@descriptionDiv']=(function($rec){smalltalk.send($rec, "_class_", ["alt"]);return smalltalk.send($rec, "_yourself", []);})(smalltalk.send(div, "_h3", [])));})]);})(smalltalk.send(html, "_div", []));return smalltalk.send(html, "_hr", []);})]);})(smalltalk.send(html, "_div", []));
+smalltalk.send(self, "_repositoryJsonDo_", [(function(json){smalltalk.send(self['@descriptionDiv'], "_contents_", [(function(h){return smalltalk.send(h, "_with_", [smalltalk.send(json, "_description", [])]);})]);return smalltalk.send(self, "_renderProjectLink_", [smalltalk.send(json, "_at_", ["html_url"])]);})]);
 return self;}
 }),
 smalltalk.AmberProjectPage);
@@ -69,7 +69,7 @@ smalltalk.method({
 selector: unescape('renderProjectLink%3A'),
 fn: function (url){
 var self=this;
-smalltalk.send(self['@projectLinkDiv'], "_with_", [(function(h){return smalltalk.send(smalltalk.send(h, "_h1", []), "_with_", [(function(){return (function($rec){smalltalk.send($rec, "_href_", [url]);return smalltalk.send($rec, "_with_", [smalltalk.send(self, "_projectname", [])]);})(smalltalk.send(h, "_a", []));})]);})]);
+smalltalk.send(self['@projectLinkDiv'], "_contents_", [(function(h){return (function($rec){smalltalk.send($rec, "_href_", [url]);return smalltalk.send($rec, "_with_", [smalltalk.send(self, "_projectname", [])]);})(smalltalk.send(h, "_a", []));})]);
 return self;}
 }),
 smalltalk.AmberProjectPage);

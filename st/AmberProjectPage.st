@@ -57,28 +57,27 @@ renderOn: html
 		html div
 			id: 'header';
 			class: 'span-24 last';
-			with: [ :div | projectLinkDiv := div ].
+			with: [ :div | projectLinkDiv := div h1 ].
 		html hr.
 		html div
 			id: 'subheader';
 			class: 'span-24 last';
 			with: [:div | 
-				descriptionDiv := div h3
+				descriptionDiv := (div h3)
 					class: 'alt';
 					yourself ].
 		html hr ].
 	self repositoryJsonDo: [:json | 
-        	descriptionDiv with: json description.
+        	descriptionDiv contents: [:h | h with: json description ].
 		self renderProjectLink: (json at: 'html_url') ]
 !
 
 renderProjectLink: url
 
-	projectLinkDiv with: [:h | 
-                 h h1 with: [
+	projectLinkDiv contents: [:h | 
                  	h 
 				a href: url; 
-                        	with: self projectname ]].
+                        	with: self projectname ].
 ! !
 
 !AmberProjectPage class methodsFor: 'instance creation'!
