@@ -22,14 +22,14 @@ curl -L https://github.com/dalehenrich/amber-project-template/zipball/master >> 
 unzip template.zip
 rm template.zip
 mkdir myProject
-mv dalehenrich-amber-project-template-df98acc/* myProject
-rm -rf dalehenrich-amber-project-template-df98acc
+mv dalehenrich-amber-project-template-*/* myProject
+rm -rf dalehenrich-amber-project-template-*
 cd myProject
 git init
 git add .
 git commit -a -m"first commit"
-git submodule init
-git submodule update
+rm -rf amber
+git submodule add https://github.com/NicolasPetton/amber.git amber
 </pre>
 
 2. Install node (extracted from: [Getting Started page](https://github.com/NicolasPetton/amber/wiki/Getting-started) 
