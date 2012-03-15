@@ -59,7 +59,7 @@ smalltalk.addMethod(
 unescape('_getRepositoryJsonDo_onError_'),
 smalltalk.method({
 selector: unescape('getRepositoryJsonDo%3AonError%3A'),
-category: 'accessing',
+category: 'ajax',
 fn: function (aBlock, errorBlock){
 var self=this;
 smalltalk.send(self, "_getJson_do_onError_", [smalltalk.send(smalltalk.send(smalltalk.send(unescape("https%3A/api.github.com/repos/"), "__comma", [smalltalk.send(self, "_username", [])]), "__comma", [unescape("/")]), "__comma", [smalltalk.send(self, "_projectname", [])]), aBlock, errorBlock]);
@@ -127,7 +127,7 @@ smalltalk.addMethod(
 unescape('_getAuthorJsonDo_onError_'),
 smalltalk.method({
 selector: unescape('getAuthorJsonDo%3AonError%3A'),
-category: 'accessing',
+category: 'ajax',
 fn: function (aBlock, errorBlock){
 var self=this;
 smalltalk.send(self, "_getJson_do_onError_", [smalltalk.send(unescape("https%3A/api.github.com/users/"), "__comma", [smalltalk.send(self, "_username", [])]), aBlock, errorBlock]);
@@ -143,7 +143,7 @@ smalltalk.addMethod(
 unescape('_getJson_do_onError_'),
 smalltalk.method({
 selector: unescape('getJson%3Ado%3AonError%3A'),
-category: 'accessing',
+category: 'ajax',
 fn: function (url, aBlock, errorBlock){
 var self=this;
 smalltalk.send((typeof jQuery == 'undefined' ? nil : jQuery), "_ajax_options_", [url, smalltalk.HashedCollection._fromPairs_([smalltalk.send("type", "__minus_gt", ["GET"]),smalltalk.send("dataType", "__minus_gt", ["jsonp"]),smalltalk.send("success", "__minus_gt", [(function(jsonpData, status, jqXHR){return smalltalk.send(aBlock, "_value_", [smalltalk.send(jsonpData, "_data", [])]);})]),smalltalk.send("error", "__minus_gt", [(function(jqXHR, status, error){return smalltalk.send(errorBlock, "_value_", [smalltalk.send(status, "_printString", [])]);})])])]);

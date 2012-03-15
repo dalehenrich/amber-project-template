@@ -24,11 +24,6 @@ projectname
 	^projectname
 !
 
-getRepositoryJsonDo: aBlock onError: errorBlock
-
-	self getJson: 'https:/api.github.com/repos/', self username, '/', self projectname do: aBlock onError: errorBlock
-!
-
 repositoryJsonDo: aBlock
 
 	repositoryJson ifNil: [
@@ -50,6 +45,13 @@ authorJsonDo: aBlock
 			onError: [:status |  ].
 		^self ].
 	aBlock value authorJson
+! !
+
+!AmberProjectPage methodsFor: 'ajax'!
+
+getRepositoryJsonDo: aBlock onError: errorBlock
+
+	self getJson: 'https:/api.github.com/repos/', self username, '/', self projectname do: aBlock onError: errorBlock
 !
 
 getAuthorJsonDo: aBlock onError: errorBlock
