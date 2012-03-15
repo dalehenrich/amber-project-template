@@ -1,6 +1,6 @@
 Smalltalk current createPackage: 'AmberProjectPage' properties: #{}!
 Widget subclass: #AmberProjectPage
-	instanceVariableNames: 'repositoryDiv username projectname descriptionDiv'
+	instanceVariableNames: 'repositoryDiv username projectname descriptionDiv repositoryJson requestStatus'
 	category: 'AmberProjectPage'!
 
 !AmberProjectPage methodsFor: 'accessing'!
@@ -22,6 +22,17 @@ projectname
 		path := window location pathname.
 		projectname := path copyFrom: 2 to: path size - 1 ].
 	^projectname
+!
+
+repositoryJsonDo: aBlock
+
+	repositoryJson ifNil: [
+		self 
+			getRepositoryJsonDo: [:repoJSON | 
+				repositoryJson :=  repoJSON.
+				aBlock value: repositoryJson   ] 
+			onError: [:status |  ] ].
+	aBlock value repositoryJson
 ! !
 
 !AmberProjectPage methodsFor: 'rendering'!
@@ -40,8 +51,8 @@ renderOn: html
 			with: [:div | 
 				descriptionDiv := div h3
 					class: 'alt';
-					with: 'Amber Project description';
-					yourself ].
+					yourself.
+				self repositoryJsonDo: [:json | descriptionDiv with: json description ]].
 		html hr.
 		html with: 'This is your Amber project README.' .
 		repositoryDiv := html div id:'test'.
@@ -51,9 +62,6 @@ renderOn: html
 				class:'test';
                 		with: 'test get';
                 		onClick: [  repositoryDiv contents:  [:div | self getTest  ] ] ] ].
-	self 
-		getRepositoryJsonDo: [:repoJSON | descriptionDiv contents: [:h | h with: repoJSON description ]] 
-		onError: [:status | ]
 !
 
 getTest
