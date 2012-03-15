@@ -1,6 +1,6 @@
 Smalltalk current createPackage: 'AmberProjectPage' properties: #{}!
 Widget subclass: #AmberProjectPage
-	instanceVariableNames: 'repositoryDiv username projectname descriptionDiv repositoryJson requestStatus'
+	instanceVariableNames: 'username projectname descriptionDiv repositoryJson projectLinkDiv'
 	category: 'AmberProjectPage'!
 
 !AmberProjectPage methodsFor: 'accessing'!
@@ -24,6 +24,19 @@ projectname
 	^projectname
 !
 
+getRepositoryJsonDo: aBlock onError: errorBlock
+
+	jQuery 
+		ajax: 'https:/api.github.com/repos/', self username, '/', self projectname
+		options: #{ 
+			'type' -> 'GET'.
+			'dataType' -> 'jsonp'.
+			'success' -> [:repositoryData :status :jqXHR | 
+				aBlock value: repositoryData data  ].
+     			'error' ->[:jqXHR :status :error | 
+				errorBlock value: status printString ]}.
+!
+
 repositoryJsonDo: aBlock
 
 	repositoryJson ifNil: [
@@ -44,7 +57,7 @@ renderOn: html
 		html div
 			id: 'header';
 			class: 'span-24 last';
-			with: [ :div | div h1: self projectname ].
+			with: [ :div | projectLinkDiv := div h1; yourself ].
 		html hr.
 		html div
 			id: 'subheader';
@@ -52,43 +65,20 @@ renderOn: html
 			with: [:div | 
 				descriptionDiv := div h3
 					class: 'alt';
-					yourself.
-				self repositoryJsonDo: [:json | descriptionDiv with: json description ]].
-		html hr.
-		html with: 'This is your Amber project README.' .
-		repositoryDiv := html div id:'test'.
-		html div with:[   	
-			html 
-        			button
-				class:'test';
-                		with: 'test get';
-                		onClick: [  repositoryDiv contents:  [:div | self getTest  ] ] ] ].
+					yourself ].
+		html hr ].
+	self repositoryJsonDo: [:json | 
+        	descriptionDiv with: json description.
+		self renderProjectLink: (json at: 'html_url') ]
 !
 
-getTest
+renderProjectLink: url
 
-	jQuery 
-		ajax: 'https:/api.github.com/repos/dalehenrich/amber-project-template'
-		options: #{ 
-			'type' -> 'GET'.
-			'dataType' -> 'jsonp'.
-			'success' -> [:repositoryData :status :jqXHR | 
-				repositoryDiv with: repositoryData data name ].
-     			'error' ->[:jqXHR :status :error | 
-				repositoryDiv with: status printString  ]}.
-!
-
-getRepositoryJsonDo: aBlock onError: errorBlock
-
-	jQuery 
-		ajax: 'https:/api.github.com/repos/', self username, '/', self projectname
-		options: #{ 
-			'type' -> 'GET'.
-			'dataType' -> 'jsonp'.
-			'success' -> [:repositoryData :status :jqXHR | 
-				aBlock value: repositoryData data  ].
-     			'error' ->[:jqXHR :status :error | 
-				errorBlock value: status printString ]}.
+	projectLinkDiv contents: [:html |
+		html p with: [:h | 
+                 	h
+                        	a href: url; 
+                        	with: self projectname ]].
 ! !
 
 !AmberProjectPage class methodsFor: 'instance creation'!
