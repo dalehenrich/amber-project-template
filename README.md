@@ -16,7 +16,7 @@ and [.js](https://github.com/NicolasPetton/amber/tree/master/js) artifacts.
 3. The [node server script](bin/server) has been linked in the top-level for convenience.
 
 ##Installation
-1. Create a git repository for your project and copy the contents of the tempate into the repository:
+1. Create a git repository for your project and copy the contents of the template into the repository:
 <pre>
 curl -L https://github.com/dalehenrich/amber-project-template/zipball/master >> template.zip
 unzip template.zip
