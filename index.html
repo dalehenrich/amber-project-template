@@ -5,14 +5,15 @@
   <body>
     <script type='text/javascript'> loadAmber({
         files: [
-        'AmberProjectPage.js',
-        'AmberProjectImporter.js'
+          'AmberProjectImporter.js'
         ],
-        prefix: '../js',
+        prefix: 'js',
         ready: function() {
           $(function() {
-            smalltalk.AmberProjectPage._open();
-            smalltalk.Browser._openOn_(smalltalk.AmberProjectPage);
+            smalltalk.Browser._openOn_(smalltalk.Object);
+            smalltalk.AmberProjectImporter._importSTPackage_prefix_(
+              'AmberProjectPage', '../st/'
+              );
           });
         }}) </script>
   </body> 
