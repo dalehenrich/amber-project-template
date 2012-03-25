@@ -1,3 +1,0 @@
-[submodule "lib/amber"]
-	path = lib/amber
-	url = git://github.com/NicolasPetton/amber.git
