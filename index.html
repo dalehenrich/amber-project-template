@@ -10,10 +10,10 @@
         prefix: 'js',
         ready: function() {
           $(function() {
-            smalltalk.Browser._openOn_(smalltalk.Object);
-            smalltalk.AmberProjectImporter._importSTPackage_prefix_(
-              'AmberProjectPage', '../st/'
-              );
+            smalltalk.Browser._open();
+            smalltalk.AmberProjectImporter._importSTPackages_prefix_(
+              [ 'AmberProjectPage' ],
+              '../st/');
           });
         }}) </script>
   </body> 
