@@ -15,12 +15,13 @@ separate from the amber
 [.st](https://github.com/NicolasPetton/amber/tree/master/st) 
 and [.js](https://github.com/NicolasPetton/amber/tree/master/js) artifacts.
 
-3.Instead of loading code from .js files, the .st
+3. Instead of loading code from .js files, the .st
 files are directly loaded into amber using the AmberProjectImporter.
 It is no longer necessary to save the 
 [js/*.js](https://github.com/dalehenrich/amber-project-template/blob/master/js) 
 in git. When you deploy your project you will want to grab the
 appropriate js files and copy them into the lib structure. 
+
 4. The [node server script](bin/server) has been linked in the top-level for convenience.
 
 ##Installation
