@@ -3,8 +3,11 @@ This is a template that you can use for easily creating your own [Amber-based][1
 
 ##Features
 
-1. Nicolas Petton's Amber project is linked into the template as a git submodule
-(lib/amber).  See
+1. [My Amber project](https://github.com/dalehenrich/amber)
+is linked into the template as a git submodule
+(lib/amber). I have a few changes to the amber.js to get the loads to work correctly while using Amber as a 
+submodule.
+See
 [Working with submodules](http://help.github.com/submodules/) for more information about using submodules on github.
 
 2. The [amber launch script](https://github.com/dalehenrich/amber-project-template/blob/master/js/amber.js) 
@@ -37,7 +40,7 @@ cd myProject
 git init
 git add .
 rm -rf lib/amber
-git submodule add git://github.com/NicolasPetton/amber.git lib/amber
+git submodule add git://github.com/dalehenrich/amber.git lib/amber
 git commit -a -m"first commit"
 </pre>
 
