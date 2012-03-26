@@ -10,7 +10,7 @@ submodule.
 See
 [Working with submodules](http://help.github.com/submodules/) for more information about using submodules on github.
 
-2. The [amber launch script](https://github.com/dalehenrich/amber-project-template/blob/master/js/amber.js) 
+2. The [amber launch script](https://github.com/dalehenrich/amber/blob/master/js/amber.js) 
 has been modified so that you can store your 
 project 
 [st/*.st files](https://github.com/dalehenrich/amber-project-template/blob/master/st) 
